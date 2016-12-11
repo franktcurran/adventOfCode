@@ -4,9 +4,12 @@ export default Ember.Component.extend({
   commands: "",
   possibleTriangles: Ember.A([]),
   possibleTrianglesCount: 0,
+  getTriangles: function(commands) {
+    return commands.split("\n");
+  },
   actions: {
     solve() {
-      let potentialTriangles = this.get('commands').split("\n");
+      let potentialTriangles = this.get('getTriangles')(this.get('commands'));
       potentialTriangles.forEach((potentialTriangle) => {
         console.log(potentialTriangle);
         let sides = potentialTriangle.trim().split(/\s+/);
