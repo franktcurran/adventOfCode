@@ -19,10 +19,8 @@ export default Ember.Component.extend({
       let position = keyPad.FIVE;
       let lines = this.get('commands').split(/\n/);
       lines.forEach((line) => {
-        console.log(line);
         let directions = line.split("");
         directions.forEach((direction, idx, array) => {
-          console.log(direction);
           switch (direction) {
             case "U":
               position = keyPad.properties[position].up;

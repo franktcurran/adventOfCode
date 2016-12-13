@@ -11,7 +11,6 @@ export default Ember.Component.extend({
     solve() {
       let potentialTriangles = this.get('getTriangles')(this.get('commands'));
       potentialTriangles.forEach((potentialTriangle) => {
-        console.log(potentialTriangle);
         let sides = potentialTriangle.trim().split(/\s+/);
         let notPossible = sides.any((side, idx, array) => {
           let sum = 0;
@@ -21,8 +20,6 @@ export default Ember.Component.extend({
             }
           }
           if (side >= sum) {
-            console.log("Not possible! ");
-            console.log("Side: " + side + ", Sum: " + sum);
             return true;
           } else {
             return false;

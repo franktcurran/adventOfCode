@@ -12,7 +12,6 @@ export default Ember.Component.extend({
       // could also use a circular linked list for direction?
       let orientationEnum = this.get('orientationEnum');
       let orientation = this.get('orientation');
-      console.log("Facing: " + orientation);
       switch (orientation) {
         case orientationEnum.NORTH:
           if ("L" === direction) {
@@ -45,11 +44,9 @@ export default Ember.Component.extend({
         default:
           break;
       }
-      console.log("Now Facing: " + orientation);
       this.set('orientation', orientation);
     },
     move(command) {
-      console.log("Command: " + command);
       let orientationEnum = this.get('orientationEnum');
       this.send('turn', command.substring(0,1));
       let orientation = this.get('orientation');
@@ -107,7 +104,6 @@ export default Ember.Component.extend({
 
       // result
       position = this.get('position');
-      console.log("Ending position: " + position.x + ", " + position.y);
       let answer = Math.abs(position.x) + Math.abs(position.y);
       this.set('distanceTravelled', answer);
     }

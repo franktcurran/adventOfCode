@@ -14,13 +14,15 @@ export default Ember.Component.extend({
   },
   validateRoom: function(room) {
     var charCountArray = Ember.A([]);
-    let charArray = room.encryption.replace(/-/g, "").split("");
+    let charArray = room.encryption.split("");
     for (let i = 0; i < charArray.length; i++) {
-      let find = charCountArray.findBy("letter", charArray[i]);
-      if (!find) {
-        charCountArray.push({"letter": charArray[i], "count": 1});
-      } else {
-        find.count = find.count + 1;
+      if (charArray[i] !== "-") {
+        let find = charCountArray.findBy("letter", charArray[i]);
+        if (!find) {
+          charCountArray.push({"letter": charArray[i], "count": 1});
+        } else {
+          find.count = find.count + 1;
+        }
       }
     }
     let x = function compare(a,b) {
